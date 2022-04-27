@@ -25,6 +25,17 @@ public class UsuarioController {
         return this.usuarioService.guardarUsuario(usuario);
     }
 
+    /**
+     * endPoint para actualizar nombre usuario por medio de su ID
+     * @param usuarioModel de tipo UsuarioModel
+     * @param id de tipo Long
+     * @return usuario actualizado
+     */
+    @PutMapping(path ="/actualizar/{id}")
+    public UsuarioModel actualizarNombreUsuarioPorId(UsuarioModel usuarioModel,Long id){
+       return this.usuarioService.actualizarNombre(usuarioModel,id);
+    }
+
     @GetMapping(path = "/{id}")
     public Optional<UsuarioModel> obtenerUsuarioPorId(@PathVariable("id") Long id) {
         return this.usuarioService.obtenerPorId(id);

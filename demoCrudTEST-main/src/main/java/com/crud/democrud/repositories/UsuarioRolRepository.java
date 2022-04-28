@@ -10,6 +10,4 @@ import java.util.Optional;
 @Repository
 public interface UsuarioRolRepository extends CrudRepository<UsuarioRolModel, Long> {
 
-
-//    public abstract Optional<UsuarioRolModel> encontrarPorRol(String rol);
 }

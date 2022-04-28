@@ -40,4 +40,9 @@ public class UsuarioModel {
     private List<UsuarioRolModel> usuarioRols;
 
 
+    public UsuarioModel(String nombre, String email, Integer prioridad) {
+        this.nombre = nombre;
+        this.email = email;
+        this.prioridad = prioridad;
+    }
 }

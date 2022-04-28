@@ -51,7 +51,7 @@ public class UsuarioRolController {
     }
 
     @PutMapping("/actualizar/{id}")
-    public ResponseEntity<Respuesta> actualizarRolUsuario(@RequestBody UsuarioRolModel usuarioRolModel, @PathVariable(value = "id") Long id){
+    public ResponseEntity<Respuesta> actualizarRolUsuario(@PathVariable(value = "id") Long id, @RequestBody UsuarioRolModel usuarioRolModel){
         response.Reiniciar();
         try {
             response.data = usuarioRolService.actualizarRol(id,usuarioRolModel);

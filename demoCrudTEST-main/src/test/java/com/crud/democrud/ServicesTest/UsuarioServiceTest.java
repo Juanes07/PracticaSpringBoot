@@ -21,8 +21,8 @@ public class UsuarioServiceTest {
     UsuarioRepository usuarioRepository;
 
     @Test
-    public void testGuardarUsuario(){
-        UsuarioModel usuarioModel=new UsuarioModel("aquaman","aqua@gmail.com",99);
+    public void testGuardarUsuario() {
+        UsuarioModel usuarioModel = new UsuarioModel();
         UsuarioModel usuarioModelRegistrado = usuarioRepository.save(usuarioModel);
         assertNotNull(usuarioModelRegistrado);
     }
@@ -30,13 +30,21 @@ public class UsuarioServiceTest {
     @Test
     public void testBuscarUsuarioPorId(){
         Long idBuscado=1L;
-        Optional<UsuarioModel> usuarioModelBuscado=usuarioRepository.findById(idBuscado);
+        Optional<UsuarioModel> usuarioModelBuscado= usuarioRepository.findById(idBuscado);
         assertThat(usuarioModelBuscado.get().getId()).isEqualTo(idBuscado);
     }
 
     @Test
-    public void testListarUsuarios(){
-        List<UsuarioModel> usuarioModelList=(List<UsuarioModel>) usuarioRepository.findAll();
+    public void testListarUsuarios() {
+        List<UsuarioModel> usuarioModelList = (List<UsuarioModel>) usuarioRepository.findAll();
         assertThat(usuarioModelList).size().isGreaterThan(0);
     }
+
+    @Test
+    public void testPorPrioridad(){
+        Integer prioridad = 100;
+        List<UsuarioModel> usuarioModelPriority = usuarioRepository.findByPrioridad(prioridad);
+        assertNotNull(usuarioModelPriority);
+    }
+
 }

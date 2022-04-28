@@ -22,7 +22,9 @@ public class UsuarioRolModel {
     private Long id;
 
     private String rol;
-
+    /**
+     * Relacion a la tabla usuario
+     */
     @ManyToOne(
             targetEntity = UsuarioModel.class,
             fetch = FetchType.LAZY,
@@ -32,7 +34,11 @@ public class UsuarioRolModel {
     @JsonBackReference
     private UsuarioModel usuarioModel;
 
-
+    /**
+     * Constructor
+     * @param nombreRol
+     * @param usuarioModel
+     */
     public UsuarioRolModel(String nombreRol, UsuarioModel usuarioModel) {
         this.rol = nombreRol;
         this.usuarioModel = usuarioModel;

@@ -27,61 +27,64 @@ public class UsuarioRolController {
     private HttpStatus httpStatus = HttpStatus.OK;
 
     @GetMapping("/listar")
-    public ResponseEntity<Respuesta> listaDeRoles(){
-            response.Reiniciar();
+    public ResponseEntity<Respuesta> listaDeRoles() {
+        response.Reiniciar();
         try {
             response.data = usuarioRolService.listaDeRoles();
             httpStatus = HttpStatus.OK;
-        } catch (Exception exc){
+        } catch (Exception exc) {
             getErrorMessageInternal(exc);
         }
         return new ResponseEntity<>(response, httpStatus);
     }
 
     @PostMapping("/guardar")
-    public ResponseEntity<Respuesta> guardarRol(@RequestBody UsuarioRolModel usuarioRolModel){
+    public ResponseEntity<Respuesta> guardarRol(@RequestBody UsuarioRolModel usuarioRolModel) {
         response.Reiniciar();
-        try{
+        try {
             response.data = usuarioRolService.guardarRol(usuarioRolModel);
             httpStatus = HttpStatus.OK;
-        } catch (Exception exception){
-            getErrorMessageInternal(exception);
-        }
-        return  new ResponseEntity<>(response, httpStatus);
-    }
-
-    @PutMapping("/actualizar/{id}")
-    public ResponseEntity<Respuesta> actualizarRolUsuario(@PathVariable(value = "id") Long id, @RequestBody UsuarioRolModel usuarioRolModel){
-        response.Reiniciar();
-        try {
-            response.data = usuarioRolService.actualizarRol(id,usuarioRolModel);
-            httpStatus = HttpStatus.OK;
-        } catch (Exception exc){
-            getErrorMessageInternal(exc);
-        }
-        return  new ResponseEntity<>(response, httpStatus);
-    }
-
-
-    @DeleteMapping(path = "/{id}")
-    public  ResponseEntity<Respuesta> borrarRolUsuario(@PathVariable(value = "id") Long id){
-        response.Reiniciar();
-        try {
-            response.data = usuarioRolService.eliminarRolUsuario(id);
-            if(response.data == null){
-                response.mensaje = "El rol no existe";
-                httpStatus = HttpStatus.NOT_FOUND;
-            } else {
-                response.mensaje =" EL rol fue eliminado";
-                httpStatus = HttpStatus.OK;
-            }
-        } catch (Exception exception){
+        } catch (Exception exception) {
             getErrorMessageInternal(exception);
         }
         return new ResponseEntity<>(response, httpStatus);
     }
 
+    @PutMapping("/actualizar/{id}")
+    public ResponseEntity<Respuesta> actualizarRolUsuario(@PathVariable(value = "id") Long id, @RequestBody UsuarioRolModel usuarioRolModel) {
+        response.Reiniciar();
+        try {
+            response.data = usuarioRolService.actualizarRol(id, usuarioRolModel);
+            httpStatus = HttpStatus.OK;
+        } catch (Exception exc) {
+            getErrorMessageInternal(exc);
+        }
+        return new ResponseEntity<>(response, httpStatus);
+    }
 
+
+    @DeleteMapping(path = "/{id}")
+    public ResponseEntity<Respuesta> borrarRolUsuario(@PathVariable(value = "id") Long id) {
+        response.Reiniciar();
+        try {
+            response.data = usuarioRolService.eliminarRolUsuario(id);
+            if (response.data == null) {
+                response.mensaje = "El rol no existe";
+                httpStatus = HttpStatus.NOT_FOUND;
+            } else {
+                response.mensaje = " EL rol fue eliminado";
+                httpStatus = HttpStatus.OK;
+            }
+        } catch (Exception exception) {
+            getErrorMessageInternal(exception);
+        }
+        return new ResponseEntity<>(response, httpStatus);
+    }
+
+    /**
+     * Proximos metodos creados por el profe Julian lasso en canteras, con la finalidad de manejar errores generales
+     *
+     */
     private void getErrorMessageForResponse(DataAccessException exception) {
         response.error = true;
         if (exception.getRootCause() instanceof SQLException) {
@@ -110,7 +113,6 @@ public class UsuarioRolController {
      * Administrador para las excepciones del sistema
      *
      * @param exception Objeto Exception
-     *
      * @author Julian Lasso <julian.lasso@sofka.com.co>
      * @since 1.0.0
      */

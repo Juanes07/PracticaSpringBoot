@@ -36,7 +36,7 @@ public class UsuarioService {
         }
     }
 
-    public void actualizarUsuario(Long id, UsuarioModel usuarioModel){
+    public void actualizarUsuario(Long id, UsuarioModel usuarioModel) {
         usuarioModel.setId(id);
         usuarioRepository.save(usuarioModel);
     }

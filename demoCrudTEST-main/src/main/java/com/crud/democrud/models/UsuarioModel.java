@@ -29,7 +29,9 @@ public class UsuarioModel {
 
 
     private Integer prioridad;
-
+    /**
+     * Relacion a la tabla rol
+     */
     @OneToMany(
             mappedBy = "usuarioModel",
             targetEntity = UsuarioRolModel.class,
@@ -39,7 +41,12 @@ public class UsuarioModel {
     @JsonManagedReference
     private List<UsuarioRolModel> usuarioRols;
 
-
+    /**
+     * Constructor
+     * @param nombre
+     * @param email
+     * @param prioridad
+     */
     public UsuarioModel(String nombre, String email, Integer prioridad) {
         this.nombre = nombre;
         this.email = email;

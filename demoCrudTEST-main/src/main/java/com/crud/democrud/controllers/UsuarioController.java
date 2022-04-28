@@ -70,7 +70,7 @@ public class UsuarioController {
         Optional<UsuarioModel> usuarioEncontrado = usuarioService.obtenerPorId(id);
         if(usuarioEncontrado.isPresent()){
             usuarioService.eliminarUsuario(id);
-            return  new ResponseEntity<>("Eliminado correctamente",HttpStatus.ACCEPTED);
+            return  new ResponseEntity<>("Eliminado correctamente",HttpStatus.OK);
         }
         return  new ResponseEntity<>("No existe el usuario a eliminar", HttpStatus.NOT_FOUND);
     }
